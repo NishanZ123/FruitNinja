@@ -1,0 +1,12 @@
+fileFormatVersion: 2
+guid: 4646f7092b926914f8b0e932eb5fead1
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - appleGravityPrefab: {fileID: 4615347693948811668, guid: b47d4c8306d132b4593bc955611a668e, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
