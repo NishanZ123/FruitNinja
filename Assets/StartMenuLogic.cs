@@ -10,6 +10,16 @@ public class StartMenuLogic : MonoBehaviour
         SceneManager.LoadScene("NinjaGame");
     }
 
+    public void OpenStore()
+    {
+        SceneManager.LoadScene("Store");
+    }
+
+    public void OpenMainMenu()
+    {
+        SceneManager.LoadScene("MainMenu");
+    }
+
     public void QuitGame()
     {
         #if UNITY_EDITOR
