@@ -6,6 +6,7 @@ public class Fruit2D : MonoBehaviour
 {
     private bool canBeDead = false; // If we can destroy the object
     private Vector3 screen; // Position on the screen
+    private Ninja_Player playerScript;
 
     public GameObject splatPrefab;
     public bool isBomb = false;
@@ -16,6 +17,7 @@ public class Fruit2D : MonoBehaviour
     void Start()
     {
         canBeDead = false; // Initialize canBeDead
+        playerScript = FindObjectOfType<Ninja_Player>();
     }
 
     void Update()
@@ -44,5 +46,17 @@ public class Fruit2D : MonoBehaviour
             Instantiate(splatPrefab, transform.position, Quaternion.identity);
         }
         Destroy(gameObject);
+
+    void OnMouseDown()
+    {
+        // Assuming 1 point is awarded for each fruit sliced
+        if (playerScript != null)
+        {
+            playerScript.IncrementScore(1);
+        }
+
+        // Add any additional effects for slicing the fruit
+        Destroy(gameObject);
+    }
     }
 }
