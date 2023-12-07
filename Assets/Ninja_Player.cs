@@ -2,9 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Ninja_Player : MonoBehaviour
 {
+    public Spawn_items spawner;
+    public GameObject gameOverPanel; // Assign this in the Inspector
+    public int lives = 3; // Starting number of lives
     public static Ninja_Player Instance { get; private set; }
     private Vector3 pos;
     public int score = 0; //Score
@@ -38,6 +42,21 @@ public class Ninja_Player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.R))
         {
             ResetGameData();
+        }
+
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            UseSlowDownTimePowerUp();
+        }
+        
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            UseDoublePointsPowerUp();
+        }
+
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+            UseExtraLifePowerUp();
         }
         //If the game is running on an Android device
         if (Application.platform == RuntimePlatform.Android)
@@ -76,8 +95,12 @@ public class Ninja_Player : MonoBehaviour
             if (item != null)
             {
                 item.Hit();
-                score++;
-                credits++;
+
+                // Check if double points power-up is active
+                int pointsToAdd = PowerUpManager.Instance.IsDoublePointsActive ? 2 : 1;
+                score += pointsToAdd;
+                credits += pointsToAdd;
+
                 Debug.Log(score);
                 Debug.Log(credits);
             }
@@ -87,11 +110,13 @@ public class Ninja_Player : MonoBehaviour
             if (item != null && item.isBomb)
             {
                 item.Hit();
-                score -= 2;
-                Debug.Log(score);
+                LoseLife(); // Lose a life when hitting a bomb
+                Debug.Log("Lives: " + lives);
             }
         }
     }
+
+
     public void IncrementScore(int points)
     {
         score += points;
@@ -144,5 +169,77 @@ public class Ninja_Player : MonoBehaviour
         UIManager.Instance.UpdateCreditsDisplay(credits);
         InventoryManager.Instance.UpdateInventoryUI();
     }
+    private void UseSlowDownTimePowerUp()
+    {
+        if (InventoryManager.Instance.GetPowerUpCount("SlowMotion") > 0)
+        {
+            PowerUpManager.Instance.ActivateSlowMotion(); // Activate the slowdown effect
+            InventoryManager.Instance.RemovePowerUp("SlowMotion", 1);
+        }
+        else
+        {
+            Debug.Log("No Slowdown Power-ups left to use.");
+        }
+    }
 
+    private void UseDoublePointsPowerUp()
+    {
+        if (InventoryManager.Instance.GetPowerUpCount("DoublePoints") > 0)
+        {
+            float duration = 10f; // Duration of double points effect
+            PowerUpManager.Instance.ActivateDoublePoints(duration);
+
+            InventoryManager.Instance.RemovePowerUp("DoublePoints", 1);
+            InventoryManager.Instance.UpdateInventoryUI();
+        }
+    }
+
+     public void LoseLife()
+     {
+        if (lives > 0)
+        {
+            lives--;
+            // Update UI or any other relevant components
+
+            if (lives <= 0)
+            {
+                GameOver();
+            }
+        }
+     }
+    
+    
+     public void GainLife()
+     {
+        lives++;
+        // Update UI
+     }
+
+    private void UseExtraLifePowerUp()
+    {
+        if (InventoryManager.Instance.GetPowerUpCount("ExtraLife") > 0)
+        {
+            GainLife();
+            InventoryManager.Instance.RemovePowerUp("ExtraLife", 1);
+            InventoryManager.Instance.UpdateInventoryUI();
+            Debug.Log("Lives: " + lives);
+        }
+    }
+
+    private void GameOver()
+    {
+        gameOverPanel.SetActive(true);
+        spawner.StopSpawning(); // Stop fruit spawning
+        // Additional game over logic...
+    }
+
+    public void RestartGame()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name); // Restart current scene
+    }
+
+    public void GoToMainMenu()
+    {
+        SceneManager.LoadScene("MainMenu"); // Replace "MainMenu" with your main menu scene name
+    }
 }

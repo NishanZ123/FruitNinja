@@ -1,19 +1,21 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
-    public static UIManager Instance { get; private set; } // Change to UIManager type
+    public static UIManager Instance { get; private set; }
+
     public Text creditsText;
+    // Add references for inventory UI Text elements
+    public Text slowMotionQuantityText;
+    public Text doublePointsQuantityText;
+    public Text extraLifeQuantityText;
 
     void Awake()
     {
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject);
         }
         else if (Instance != this)
         {
@@ -22,7 +24,7 @@ public class UIManager : MonoBehaviour
         InitializeCreditsDisplay();
     }
 
-    public void UpdateCreditsDisplay(int credits) // Ensure this method is public
+    public void UpdateCreditsDisplay(int credits)
     {
         creditsText.text = "Credits: " + credits;
     }
@@ -33,7 +35,27 @@ public class UIManager : MonoBehaviour
         {
             creditsText.text = "Credits: " + Ninja_Player.Instance.credits;
         }
+        else
+        {
+            Debug.LogWarning("creditsText not set in UIManager");
+        }
+    }
+
+
+    // New method to update the inventory UI references and display
+    public void UpdateInventoryUI()
+    {
+        if (slowMotionQuantityText != null)
+        {
+            slowMotionQuantityText.text = InventoryManager.Instance.GetPowerUpCount("SlowMotion").ToString();
+        }
+        if (doublePointsQuantityText != null)
+        {
+            doublePointsQuantityText.text = InventoryManager.Instance.GetPowerUpCount("DoublePoints").ToString();
+        }
+        if (extraLifeQuantityText != null)
+        {
+            extraLifeQuantityText.text = InventoryManager.Instance.GetPowerUpCount("ExtraLife").ToString();
+        }
     }
 }
-
-

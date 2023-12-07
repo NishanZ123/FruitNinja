@@ -14,6 +14,20 @@ public class StoreManager : MonoBehaviour
     public int extraLifePrice = 200;
     public Text creditsText;
 
+    public Text slowMotionQuantityText; // Assign in Inspector
+    public Text doublePointsQuantityText; // Assign in Inspector
+    public Text extraLifeQuantityText; // Assign in Inspector
+
+    void Start()
+    {
+        if (InventoryManager.Instance != null)
+        {
+            InventoryManager.Instance.SetInventoryUIText(slowMotionQuantityText, doublePointsQuantityText, extraLifeQuantityText);
+        }
+
+        InventoryManager.Instance.UpdateInventoryUI(); // Refresh shop UI with current inventory data
+    }
+
 
     public void BuyItem(string itemName)
     {
@@ -51,6 +65,7 @@ public class StoreManager : MonoBehaviour
         {
             creditsText.text = "Credits: " + Ninja_Player.Instance.credits.ToString();
         }
+        InventoryManager.Instance.UpdateInventoryUI(); // Update power-up counts as well
     }
 
     public void PurchaseSlowMotionPowerUp()

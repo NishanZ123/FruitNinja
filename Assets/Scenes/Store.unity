@@ -624,7 +624,10 @@ MonoBehaviour:
   slowMotionPrice: 100
   doublePointsPrice: 150
   extraLifePrice: 200
-  creditsText: {fileID: 0}
+  creditsText: {fileID: 508758028}
+  slowMotionQuantityText: {fileID: 1217325225}
+  doublePointsQuantityText: {fileID: 367612537}
+  extraLifeQuantityText: {fileID: 1197165997}
 --- !u!4 &231838661
 Transform:
   m_ObjectHideFlags: 0
@@ -748,6 +751,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1755c00ce8050a348aa6ed74565da200, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spawner: {fileID: 0}
+  gameOverPanel: {fileID: 0}
+  lives: 3
   score: 0
   credits: 1000
 --- !u!4 &395528749
@@ -758,7 +764,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 395528747}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 450.68802, y: 229.4056, z: -3.2607422}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -930,6 +936,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   creditsText: {fileID: 508758028}
+  slowMotionQuantityText: {fileID: 0}
+  doublePointsQuantityText: {fileID: 0}
+  extraLifeQuantityText: {fileID: 0}
 --- !u!1 &554269503
 GameObject:
   m_ObjectHideFlags: 0
@@ -2775,8 +2784,8 @@ SceneRoots:
   m_Roots:
   - {fileID: 1863294051}
   - {fileID: 925772842}
+  - {fileID: 395528749}
   - {fileID: 46400056}
   - {fileID: 109662541}
   - {fileID: 231838661}
-  - {fileID: 395528749}
   - {fileID: 1785774859}

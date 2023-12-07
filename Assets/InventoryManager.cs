@@ -5,22 +5,24 @@ using UnityEngine.UI;
 
 public class InventoryManager : MonoBehaviour
 {
-    public static InventoryManager Instance;
+    public static InventoryManager Instance { get; private set; }
     public Text slowMotionQuantityText;
     public Text doublePointsQuantityText;
     public Text extraLifeQuantityText;
 
     private Dictionary<string, int> powerUpInventory = new Dictionary<string, int>();
 
-    void Start()
+    void Awake()
     {
-        LoadInventory();
-
         if (Instance == null)
+        {
             Instance = this;
-        else
+            DontDestroyOnLoad(gameObject);
+        }
+        else if (Instance != this)
+        {
             Destroy(gameObject);
-
+        }
     }
 
     public void AddPowerUp(string powerUpName, int quantity)
@@ -51,6 +53,14 @@ public class InventoryManager : MonoBehaviour
             return powerUpInventory[powerUpName];
         }
         return 0;
+    }
+
+    public void SetInventoryUIText(Text slowMotionText, Text doublePointsText, Text extraLifeText)
+    {
+        slowMotionQuantityText = slowMotionText;
+        doublePointsQuantityText = doublePointsText;
+        extraLifeQuantityText = extraLifeText;
+        UpdateInventoryUI();
     }
 
     public void UpdateInventoryUI()
@@ -97,6 +107,20 @@ public class InventoryManager : MonoBehaviour
         // Don't forget to update the UI if necessary
         UpdateInventoryUI();
     }
+
+    public void RemovePowerUp(string powerUpName, int quantity)
+    {
+        if (powerUpInventory.ContainsKey(powerUpName))
+        {
+            powerUpInventory[powerUpName] = Mathf.Max(0, powerUpInventory[powerUpName] - quantity);
+            UpdateInventoryUI();
+
+            // Debug log to display the count after updating
+            Debug.Log(powerUpName + " Power-ups remaining: " + powerUpInventory[powerUpName]);
+        }
+    }
+
+
 
 }
 

@@ -47,16 +47,16 @@ public class Fruit2D : MonoBehaviour
         }
         Destroy(gameObject);
 
-    void OnMouseDown()
-    {
-        // Assuming 1 point is awarded for each fruit sliced
-        if (playerScript != null)
+        void OnMouseDown()
         {
-            playerScript.IncrementScore(1);
-        }
+            // Assuming 1 point is awarded for each fruit sliced
+            if (playerScript != null)
+            {
+                playerScript.IncrementScore(1);
+            }
 
-        // Add any additional effects for slicing the fruit
-        Destroy(gameObject);
-    }
+            // Add any additional effects for slicing the fruit
+            Destroy(gameObject);
+        }
     }
 }

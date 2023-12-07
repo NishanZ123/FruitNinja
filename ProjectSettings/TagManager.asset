@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Fruit
   - Enemy
+  - Bomb
   layers:
   - Default
   - TransparentFX
