@@ -41,6 +41,13 @@ public class UIManager : MonoBehaviour
         }
     }
 
+    public void InitializeNinjaGameUI(Text slowMotionText, Text doublePointsText, Text extraLifeText)
+    {
+        slowMotionQuantityText = slowMotionText;
+        doublePointsQuantityText = doublePointsText;
+        extraLifeQuantityText = extraLifeText;
+        UpdateInventoryUI();
+    }
 
     // New method to update the inventory UI references and display
     public void UpdateInventoryUI()

@@ -57,6 +57,7 @@ public class StoreManager : MonoBehaviour
             Debug.Log("Not enough credits to purchase.");
             // Optionally, update the UI to reflect that the player cannot afford the item
         }
+        InventoryManager.Instance.SaveInventory();
     }
 
     private void UpdateStoreUI()

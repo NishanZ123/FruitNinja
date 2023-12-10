@@ -23,7 +23,9 @@ public class InventoryManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        LoadInventory(); // Load the inventory when the game starts
     }
+
 
     public void AddPowerUp(string powerUpName, int quantity)
     {
@@ -33,6 +35,7 @@ public class InventoryManager : MonoBehaviour
         }
         powerUpInventory[powerUpName] += quantity;
         UpdateInventoryUI();
+        NotifyInventoryChanged();
     }
 
 
@@ -41,10 +44,12 @@ public class InventoryManager : MonoBehaviour
         if (powerUpInventory.ContainsKey(powerUpName) && powerUpInventory[powerUpName] > 0)
         {
             powerUpInventory[powerUpName]--;
-            return true;
+            NotifyInventoryChanged(); // Notify after using a powerup
+            return true; // Powerup was used successfully
         }
-        return false;
+        return false; // Powerup was not used because it wasn't available
     }
+
 
     public int GetPowerUpCount(string powerUpName)
     {
@@ -117,10 +122,25 @@ public class InventoryManager : MonoBehaviour
 
             // Debug log to display the count after updating
             Debug.Log(powerUpName + " Power-ups remaining: " + powerUpInventory[powerUpName]);
+            NotifyInventoryChanged();
         }
     }
 
 
+    void OnApplicationQuit()
+    {
+        SaveInventory();
+    }
 
+    public delegate void InventoryChanged();
+    public event InventoryChanged OnInventoryChanged;
+    
+    private void NotifyInventoryChanged()
+    {
+        if (OnInventoryChanged != null)
+        {
+            OnInventoryChanged();
+        }
+    }
 }
 

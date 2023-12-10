@@ -13,9 +13,14 @@ public class Ninja_Player : MonoBehaviour
     private Vector3 pos;
     public int score = 0; //Score
     public int credits; // credits
+    public Text slowMotionQuantityText;
+    public Text doublePointsQuantityText;
+    public Text extraLifeQuantityText;
+
     // Start is called before the first frame update
     void Start()
     {
+        UIManager.Instance.InitializeNinjaGameUI(slowMotionQuantityText, doublePointsQuantityText, extraLifeQuantityText);
         LoadCredits();
         Screen.orientation = ScreenOrientation.LandscapeLeft;
         Screen.sleepTimeout = SleepTimeout.NeverSleep;
@@ -29,6 +34,9 @@ public class Ninja_Player : MonoBehaviour
         {
             Destroy(gameObject); // Ensures only one instance exists
         }
+
+            InventoryManager.Instance.OnInventoryChanged += UpdatePowerupDisplay;
+            UpdatePowerupDisplay(); // Initial update
     }
     // Update is called once per frame
     void Update()
@@ -51,12 +59,12 @@ public class Ninja_Player : MonoBehaviour
         
         if (Input.GetKeyDown(KeyCode.S))
         {
-            UseDoublePointsPowerUp();
+            UseExtraLifePowerUp();
         }
 
         if (Input.GetKeyDown(KeyCode.D))
         {
-            UseExtraLifePowerUp();
+            UseDoublePointsPowerUp();
         }
         //If the game is running on an Android device
         if (Application.platform == RuntimePlatform.Android)
@@ -242,4 +250,27 @@ public class Ninja_Player : MonoBehaviour
     {
         SceneManager.LoadScene("MainMenu"); // Replace "MainMenu" with your main menu scene name
     }
+
+    void OnDestroy()
+    {
+        InventoryManager.Instance.OnInventoryChanged -= UpdatePowerupDisplay;
+    }
+
+    private void UpdatePowerupDisplay()
+    {
+        // Assuming you have Text elements in your UI for each powerup type
+        if (UIManager.Instance.slowMotionQuantityText != null)
+        {
+            UIManager.Instance.slowMotionQuantityText.text = InventoryManager.Instance.GetPowerUpCount("SlowMotion").ToString();
+        }
+        if (UIManager.Instance.doublePointsQuantityText != null)
+        {
+            UIManager.Instance.doublePointsQuantityText.text = InventoryManager.Instance.GetPowerUpCount("DoublePoints").ToString();
+        }
+        if (UIManager.Instance.extraLifeQuantityText != null)
+        {
+            UIManager.Instance.extraLifeQuantityText.text = InventoryManager.Instance.GetPowerUpCount("ExtraLife").ToString();
+        }
+    }
+
 }
