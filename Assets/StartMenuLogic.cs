@@ -19,6 +19,19 @@ public class StartMenuLogic : MonoBehaviour
     {
         SceneManager.LoadScene("MainMenu");
     }
+        public void OpenModeSelection()
+    {
+        SceneManager.LoadScene("ModeSelection");
+    }
+
+    public void OpenClassicMode()
+    {
+        SceneManager.LoadScene("ClassicMode");
+    }   
+        public void OpenQuickshotMode()
+    {
+        SceneManager.LoadScene("QuickshotMode");
+    }
 
     public void QuitGame()
     {

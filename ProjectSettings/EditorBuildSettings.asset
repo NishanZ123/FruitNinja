@@ -9,8 +9,14 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenu.unity
     guid: c89660bdd526bb644b9fc6609d1585e3
   - enabled: 1
-    path: Assets/Scenes/NinjaGame.unity
+    path: Assets/Scenes/ModeSelection.unity
+    guid: 2d88a7b43b3278a47be9b3b5b23fe60a
+  - enabled: 1
+    path: Assets/Scenes/ClassicMode.unity
     guid: d1766532e31be544eb0ab1667f734041
+  - enabled: 1
+    path: Assets/Scenes/QuickshotMode.unity
+    guid: 6c4dc300337c07047b56f7be5e878b59
   - enabled: 1
     path: Assets/Scenes/Store.unity
     guid: 345c0d72634833744865a892c77631ea

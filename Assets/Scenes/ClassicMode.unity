@@ -490,7 +490,7 @@ GameObject:
   - component: {fileID: 305974319}
   - component: {fileID: 305974318}
   m_Layer: 0
-  m_Name: Owned 2
+  m_Name: X 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -512,7 +512,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.43857574}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -464, y: 27.199997}
+  m_AnchoredPosition: {x: -503.2, y: 27.199997}
   m_SizeDelta: {x: 174.056, y: -138.2047}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &305974318
@@ -548,7 +548,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'owned:'
+  m_Text: x
 --- !u!222 &305974319
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -660,7 +660,6 @@ RectTransform:
   - {fileID: 779842466}
   - {fileID: 1835383031}
   - {fileID: 1576186122}
-  - {fileID: 1955403708}
   - {fileID: 176980482}
   - {fileID: 1024796820}
   - {fileID: 519420032}
@@ -1118,7 +1117,7 @@ GameObject:
   - component: {fileID: 905150837}
   - component: {fileID: 905150836}
   m_Layer: 0
-  m_Name: Owned 3
+  m_Name: X 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1140,7 +1139,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.43857574}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -464, y: -55.6}
+  m_AnchoredPosition: {x: -503.2, y: -55.6}
   m_SizeDelta: {x: 174.056, y: -138.2047}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &905150836
@@ -1176,7 +1175,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'owned:'
+  m_Text: x
 --- !u!222 &905150837
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2079,56 +2078,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &1955403706
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1955403708}
-  - component: {fileID: 1955403707}
-  m_Layer: 0
-  m_Name: Spawner2
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!114 &1955403707
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1955403706}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4646f7092b926914f8b0e932eb5fead1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spawnTime: 2
-  appleGravityPrefab: {fileID: 4615347693948811668, guid: b47d4c8306d132b4593bc955611a668e, type: 3}
-  upForce: 20
-  leftRightForce: 2
-  maxX: -7
-  minX: 7
---- !u!4 &1955403708
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1955403706}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -597.54706, y: -269.58594, z: 4.0506735}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 316415353}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1983702751
 GameObject:
   m_ObjectHideFlags: 0
@@ -2216,7 +2165,7 @@ GameObject:
   - component: {fileID: 2034799694}
   - component: {fileID: 2034799693}
   m_Layer: 0
-  m_Name: Owned 1
+  m_Name: X 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2238,7 +2187,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.43857574}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -464, y: 109.5}
+  m_AnchoredPosition: {x: -503.2, y: 109.5}
   m_SizeDelta: {x: 174.056, y: -138.2047}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2034799693
@@ -2274,7 +2223,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'owned:'
+  m_Text: x
 --- !u!222 &2034799694
 CanvasRenderer:
   m_ObjectHideFlags: 0
