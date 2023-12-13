@@ -24,7 +24,8 @@ public class PauseMenuLogic : MonoBehaviour
     }
 
     public void MainMenu() {
-        SceneManager.LoadScene("MainMenu");
+        SceneManager.LoadScene("ModeSelection");
+        Time.timeScale = 1;
     }
 
     public void Update()
@@ -33,6 +34,7 @@ public class PauseMenuLogic : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.P))
         {
             // Toggle the pause menu
+            // If pausemenu is active then....
             if (pauseMenu.activeSelf)
             {
                 pauseMenu.SetActive(false);
