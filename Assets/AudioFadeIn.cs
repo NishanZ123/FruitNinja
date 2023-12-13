@@ -1,17 +1,30 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class AudioFadeIn : MonoBehaviour
 {
+    public static AudioFadeIn Instance; // Singleton instance
+
     public AudioSource audioSource;
     public float fadeInDuration = 2.0f; // Duration in seconds for the fade-in effect
     public float targetVolume = 1.0f; // Target volume after fade-in
 
+    void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject); // Keep the GameObject across scenes
+        }
+        else if (Instance != this)
+        {
+            Destroy(gameObject); // Destroy this instance because one already exists
+            return; // Exit to prevent further execution
+        }
+    }
+
     void Start()
     {
-
-
         if (audioSource == null)
         {
             audioSource = GetComponent<AudioSource>();
