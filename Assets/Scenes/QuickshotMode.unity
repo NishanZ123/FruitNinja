@@ -433,6 +433,7 @@ RectTransform:
   - {fileID: 1358134869}
   - {fileID: 830170174}
   - {fileID: 1351332639}
+  - {fileID: 211646051}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -477,6 +478,64 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 26.100006}
   m_SizeDelta: {x: 200, y: 52.200005}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &211646050
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 211646051}
+  - component: {fileID: 211646053}
+  - component: {fileID: 211646052}
+  m_Layer: 0
+  m_Name: Logic Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &211646051
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 211646050}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 580, y: 260.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 161015079}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &211646052
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 211646050}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4809db2546436704fbfd3507774373db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pauseMenu: {fileID: 830170173}
+--- !u!114 &211646053
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 211646050}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f8ed5dbef61c8549814738815643067, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &365505581
 GameObject:
   m_ObjectHideFlags: 0
@@ -703,7 +762,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 211646052}
         m_TargetAssemblyTypeName: PauseMenuLogic, Assembly-CSharp
         m_MethodName: Pause
         m_Mode: 1
@@ -1716,7 +1775,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 211646052}
         m_TargetAssemblyTypeName: PauseMenuLogic, Assembly-CSharp
         m_MethodName: MainMenu
         m_Mode: 1
@@ -2224,7 +2283,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 211646052}
         m_TargetAssemblyTypeName: PauseMenuLogic, Assembly-CSharp
         m_MethodName: Resume
         m_Mode: 1
@@ -2690,7 +2749,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 211646052}
         m_TargetAssemblyTypeName: PauseMenuLogic, Assembly-CSharp
         m_MethodName: Restart
         m_Mode: 1
