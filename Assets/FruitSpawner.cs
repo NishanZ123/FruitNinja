@@ -15,7 +15,7 @@ public class FruitSpawner : MonoBehaviour
 
     void SpawnFruit()
     {
-        Vector2 spawnPosition = Camera.main.ViewportToWorldPoint(new Vector2(Random.Range(0f, 1f), Random.Range(0f, 1f)));
+        Vector2 spawnPosition = Camera.main.ViewportToWorldPoint(new Vector2(Random.Range(0.1f, 0.9f), Random.Range(0.1f, 0.9f)));
         GameObject fruit = Instantiate(fruitPrefabs[Random.Range(0, fruitPrefabs.Length)], new Vector3(spawnPosition.x, spawnPosition.y, 0), Quaternion.identity);
 
         // Prevent fruits from falling
