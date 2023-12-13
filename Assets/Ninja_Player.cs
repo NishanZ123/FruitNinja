@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class Ninja_Player : MonoBehaviour
 {
+    public enum GameMode { Classic, Quickshot }
+    public GameMode currentGameMode;
     public Spawn_items spawner;
     public GameObject gameOverPanel; // Assign this in the Inspector
     public int lives = 3; // Starting number of lives
@@ -16,6 +18,7 @@ public class Ninja_Player : MonoBehaviour
     public Text slowMotionQuantityText;
     public Text doublePointsQuantityText;
     public Text extraLifeQuantityText;
+
 
     // Start is called before the first frame update
     void Start()
@@ -234,11 +237,18 @@ public class Ninja_Player : MonoBehaviour
         }
     }
 
-    private void GameOver()
+    public void GameOver()
     {
-        gameOverPanel.SetActive(true);
-        spawner.StopSpawning(); // Stop fruit spawning
-        // Additional game over logic...
+        if (currentGameMode == GameMode.Quickshot)
+        {
+            // Handle game over for Quickshot mode
+            gameOverPanel.SetActive(true);
+        }
+        else
+        {
+            gameOverPanel.SetActive(true);
+            spawner.StopSpawning(); // Stop fruit spawning
+        }
     }
 
     public void RestartGame()
