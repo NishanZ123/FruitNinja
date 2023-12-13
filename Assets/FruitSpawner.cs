@@ -9,7 +9,7 @@ public class FruitSpawner : MonoBehaviour
     private Ninja_Player ninjaPlayer;
     private float timeLimit = 10f; // 60 seconds for Quickshot mode
     private float timeElapsed = 0f; // Time elapsed since the start
-    private bool gameOverTriggered = false; 
+    private bool gameOverTriggered = false;
     void Start()
     {
         ninjaPlayer = FindObjectOfType<Ninja_Player>();
@@ -35,12 +35,8 @@ public class FruitSpawner : MonoBehaviour
 
     void SpawnFruit()
     {
-<<<<<<< Updated upstream
-        Vector2 spawnPosition = Camera.main.ViewportToWorldPoint(new Vector2(Random.Range(0.1f, 0.9f), Random.Range(0.1f, 0.9f)));
-=======
 
-        Vector2 spawnPosition = Camera.main.ViewportToWorldPoint(new Vector2(Random.Range(0f, 1f), Random.Range(0f, 1f)));
->>>>>>> Stashed changes
+        Vector2 spawnPosition = Camera.main.ViewportToWorldPoint(new Vector2(Random.Range(0.1f, 0.9f), Random.Range(0.1f, 0.9f)));
         GameObject fruit = Instantiate(fruitPrefabs[Random.Range(0, fruitPrefabs.Length)], new Vector3(spawnPosition.x, spawnPosition.y, 0), Quaternion.identity);
 
         // Prevent fruits from falling
