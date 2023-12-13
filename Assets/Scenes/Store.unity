@@ -409,7 +409,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &122568510
 RectTransform:
   m_ObjectHideFlags: 0
@@ -601,6 +601,7 @@ GameObject:
   m_Component:
   - component: {fileID: 231838661}
   - component: {fileID: 231838660}
+  - component: {fileID: 231838662}
   m_Layer: 0
   m_Name: StoreManager
   m_TagString: Untagged
@@ -643,6 +644,23 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &231838662
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 231838659}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02274fec7056a2f49a266633e1b6bfce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buttons:
+  - {fileID: 2121712696}
+  - {fileID: 1295575825}
+  - {fileID: 1943193972}
+  - {fileID: 1909833010}
 --- !u!1 &367612534
 GameObject:
   m_ObjectHideFlags: 0
@@ -751,6 +769,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1755c00ce8050a348aa6ed74565da200, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  slashingSound: {fileID: 8300000, guid: fe2b0831cbabede44be9762f38c50e71, type: 3}
   currentGameMode: 0
   spawner: {fileID: 0}
   gameOverPanel: {fileID: 0}
@@ -2042,6 +2061,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5a2bbaf33514c7c4f85a0dc01433ab6e, type: 3}
+--- !u!114 &1768751585 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3457900970138921992, guid: 5a2bbaf33514c7c4f85a0dc01433ab6e, type: 3}
+  m_PrefabInstance: {fileID: 1768751584}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 702e28cc82dadb541a05268714937c26, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1785774857
 GameObject:
   m_ObjectHideFlags: 0
@@ -2366,6 +2396,18 @@ MonoBehaviour:
       - m_Target: {fileID: 109662540}
         m_TargetAssemblyTypeName: StartMenuLogic, Assembly-CSharp
         m_MethodName: OpenMainMenu
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1768751585}
+        m_TargetAssemblyTypeName: AudioManager, Assembly-CSharp
+        m_MethodName: PlayClickSound
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

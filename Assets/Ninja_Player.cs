@@ -6,6 +6,9 @@ using UnityEngine.SceneManagement;
 
 public class Ninja_Player : MonoBehaviour
 {
+    public AudioClip bombHitSound;
+    public AudioClip bassDropSound;
+    public AudioClip slashingSound;
     public enum GameMode { Classic, Quickshot }
     public GameMode currentGameMode;
     public Spawn_items spawner;
@@ -106,7 +109,7 @@ public class Ninja_Player : MonoBehaviour
             if (item != null)
             {
                 item.Hit();
-
+                AudioSource.PlayClipAtPoint(slashingSound, transform.position);
                 // Check if double points power-up is active
                 int pointsToAdd = PowerUpManager.Instance.IsDoublePointsActive ? 2 : 1;
                 score += pointsToAdd;
@@ -121,6 +124,7 @@ public class Ninja_Player : MonoBehaviour
             if (item != null && item.isBomb)
             {
                 item.Hit();
+                AudioSource.PlayClipAtPoint(bombHitSound, transform.position);
                 LoseLife(); // Lose a life when hitting a bomb
                 Debug.Log("Lives: " + lives);
             }
@@ -205,22 +209,24 @@ public class Ninja_Player : MonoBehaviour
         }
     }
 
-     public void LoseLife()
-     {
+    public void LoseLife()
+    {
         if (lives > 0)
         {
             lives--;
             // Update UI or any other relevant components
-
             if (lives <= 0)
             {
+                
+              
+
                 GameOver();
             }
         }
-     }
-    
-    
-     public void GainLife()
+    }
+
+
+    public void GainLife()
      {
         lives++;
         // Update UI
@@ -243,11 +249,13 @@ public class Ninja_Player : MonoBehaviour
         {
             // Handle game over for Quickshot mode
             gameOverPanel.SetActive(true);
+            AudioSource.PlayClipAtPoint(bassDropSound, transform.position);
         }
         else
         {
             gameOverPanel.SetActive(true);
             spawner.StopSpawning(); // Stop fruit spawning
+            AudioSource.PlayClipAtPoint(bassDropSound, transform.position);
         }
     }
 
