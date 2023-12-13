@@ -27,7 +27,21 @@ public class PauseMenuLogic : MonoBehaviour
         SceneManager.LoadScene("MainMenu");
     }
 
-
-
-
+    public void Update()
+    {
+        // Check if the "P" key is pressed
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            // Toggle the pause menu
+            if (pauseMenu.activeSelf)
+            {
+                pauseMenu.SetActive(false);
+                Time.timeScale = 1; //Runs game again
+            }
+            else {
+                pauseMenu.SetActive(true);
+                Time.timeScale = 0; //Pauses game 
+            }
+        }
+    }
 }
