@@ -3,23 +3,23 @@ using UnityEngine;
 
 public class AudioFadeIn : MonoBehaviour
 {
-    public static AudioFadeIn Instance; // Singleton instance
+    public static AudioFadeIn Instance; 
 
     public AudioSource audioSource;
-    public float fadeInDuration = 2.0f; // Duration in seconds for the fade-in effect
-    public float targetVolume = 1.0f; // Target volume after fade-in
+    public float fadeInDuration = 2.0f;
+    public float targetVolume = 1.0f; 
 
     void Awake()
     {
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject); // Keep the GameObject across scenes
+            DontDestroyOnLoad(gameObject); 
         }
         else if (Instance != this)
         {
-            Destroy(gameObject); // Destroy this instance because one already exists
-            return; // Exit to prevent further execution
+            Destroy(gameObject); 
+            return; 
         }
     }
 
@@ -30,7 +30,7 @@ public class AudioFadeIn : MonoBehaviour
             audioSource = GetComponent<AudioSource>();
         }
 
-        // Start with volume at 0 and start the fade-in coroutine
+        // Starts with volume at 0 and start the fade-in coroutine
         audioSource.volume = 0;
         audioSource.Play();
         StartCoroutine(FadeIn(audioSource, fadeInDuration, targetVolume));
@@ -48,6 +48,6 @@ public class AudioFadeIn : MonoBehaviour
             yield return null;
         }
 
-        audioSource.volume = targetVol; // Ensure the volume is set to the target value at the end
+        audioSource.volume = targetVol; 
     }
 }

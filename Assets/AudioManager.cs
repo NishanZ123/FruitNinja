@@ -11,11 +11,11 @@ public class AudioManager : MonoBehaviour
     public AudioClip clickClip;
     private AudioSource audioSource;
 
-    public float bassDropVolume = 0.2f; // Adjust these values as needed
+    public float bassDropVolume = 0.2f;
     public float swordVolume = 0.2f;
     public float clickVolume = 0.2f;
 
-    void Awake()
+    void Start()
     {
         if (Instance == null)
         {

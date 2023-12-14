@@ -25,7 +25,7 @@ public class Spawn_items : MonoBehaviour
             yield return new WaitForSeconds(spawnTime);
 
             GameObject prefab = Random.Range(0, 100) < 30 ? bomb : fruits[Random.Range(0, fruits.Length)];
-            Vector3 spawnPosition = new Vector3(Random.Range(minX, maxX), transform.position.y, 0);
+            Vector3 spawnPosition = new Vector3(transform.position.x + Random.Range(minX, maxX), transform.position.y, 0);
             Quaternion randomRotation = Quaternion.Euler(0, 0, Random.Range(0, 360));
 
             GameObject go = Instantiate(prefab, spawnPosition, randomRotation);
@@ -56,4 +56,5 @@ public class Spawn_items : MonoBehaviour
             StopCoroutine(spawnCoroutine);
         }
     }
+
 }

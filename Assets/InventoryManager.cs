@@ -12,7 +12,7 @@ public class InventoryManager : MonoBehaviour
 
     private Dictionary<string, int> powerUpInventory = new Dictionary<string, int>();
 
-    void Awake()
+    void Start()
     {
         if (Instance == null)
         {
@@ -47,7 +47,7 @@ public class InventoryManager : MonoBehaviour
             NotifyInventoryChanged(); // Notify after using a powerup
             return true; // Powerup was used successfully
         }
-        return false; // Powerup was not used because it wasn't available
+        return false; // Powerup wasn't used because it wasn't available
     }
 
 
@@ -70,7 +70,7 @@ public class InventoryManager : MonoBehaviour
 
     public void UpdateInventoryUI()
     {
-        // Update the quantity display for each power-up in the inventory
+       
         if (slowMotionQuantityText != null)
         {
             slowMotionQuantityText.text = GetPowerUpCount("SlowMotion").ToString();
@@ -84,14 +84,14 @@ public class InventoryManager : MonoBehaviour
             extraLifeQuantityText.text = GetPowerUpCount("ExtraLife").ToString();
         }
 
-        // Update other inventory UI elements as needed
+        
     }
     public void SaveInventory()
     {
         PlayerPrefs.SetInt("SlowMotionCount", GetPowerUpCount("SlowMotion"));
         PlayerPrefs.SetInt("DoublePointsCount", GetPowerUpCount("DoublePoints"));
         PlayerPrefs.SetInt("ExtraLifeCount", GetPowerUpCount("ExtraLife"));
-        PlayerPrefs.Save(); // Don't forget to call this to write to disk
+        PlayerPrefs.Save(); 
     }
 
     public void LoadInventory()
@@ -99,17 +99,16 @@ public class InventoryManager : MonoBehaviour
             AddPowerUp("SlowMotion", PlayerPrefs.GetInt("SlowMotionCount", 0));
             AddPowerUp("DoublePoints", PlayerPrefs.GetInt("DoublePointsCount", 0));
             AddPowerUp("ExtraLife", PlayerPrefs.GetInt("ExtraLifeCount", 0));
-        UpdateInventoryUI(); // Make sure to update the UI with the loaded values
+        UpdateInventoryUI(); 
     }
     public void ResetInventory()
     {
-        // Code to reset all power-up counts to 0
-        // Example:
+       
         powerUpInventory["SlowMotion"] = 0;
         powerUpInventory["DoublePoints"] = 0;
         powerUpInventory["ExtraLife"] = 0;
 
-        // Don't forget to update the UI if necessary
+        
         UpdateInventoryUI();
     }
 

@@ -769,6 +769,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1755c00ce8050a348aa6ed74565da200, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bombHitSound: {fileID: 0}
+  bassDropSound: {fileID: 0}
   slashingSound: {fileID: 8300000, guid: fe2b0831cbabede44be9762f38c50e71, type: 3}
   currentGameMode: 0
   spawner: {fileID: 0}
@@ -779,6 +781,7 @@ MonoBehaviour:
   slowMotionQuantityText: {fileID: 0}
   doublePointsQuantityText: {fileID: 0}
   extraLifeQuantityText: {fileID: 0}
+  bombExplosionEffect: {fileID: 0}
 --- !u!4 &395528749
 Transform:
   m_ObjectHideFlags: 0
@@ -877,7 +880,6 @@ GameObject:
   - component: {fileID: 508758027}
   - component: {fileID: 508758029}
   - component: {fileID: 508758028}
-  - component: {fileID: 508758030}
   m_Layer: 5
   m_Name: CreditsText
   m_TagString: Untagged
@@ -946,22 +948,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 508758026}
   m_CullTransparentMesh: 1
---- !u!114 &508758030
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 508758026}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 28efe9615201f3a4b960b3a516f14de4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  creditsText: {fileID: 508758028}
-  slowMotionQuantityText: {fileID: 0}
-  doublePointsQuantityText: {fileID: 0}
-  extraLifeQuantityText: {fileID: 0}
 --- !u!1 &554269503
 GameObject:
   m_ObjectHideFlags: 0
@@ -1455,6 +1441,54 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
+--- !u!1 &1011335686
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1011335688}
+  - component: {fileID: 1011335687}
+  m_Layer: 0
+  m_Name: UIManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1011335687
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1011335686}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 28efe9615201f3a4b960b3a516f14de4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  creditsText: {fileID: 508758028}
+  slowMotionQuantityText: {fileID: 0}
+  doublePointsQuantityText: {fileID: 0}
+  extraLifeQuantityText: {fileID: 0}
+--- !u!4 &1011335688
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1011335686}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.6047988, y: -0.39793575, z: 1.995833}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1071144199
 GameObject:
   m_ObjectHideFlags: 0
@@ -2893,3 +2927,4 @@ SceneRoots:
   - {fileID: 231838661}
   - {fileID: 1785774859}
   - {fileID: 1768751584}
+  - {fileID: 1011335688}

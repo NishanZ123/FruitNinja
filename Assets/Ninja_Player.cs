@@ -6,13 +6,13 @@ using UnityEngine.SceneManagement;
 
 public class Ninja_Player : MonoBehaviour
 {
-    public AudioClip bombHitSound;
+    public AudioClip bombHitSound; //All sounds
     public AudioClip bassDropSound;
     public AudioClip slashingSound;
-    public enum GameMode { Classic, Quickshot }
+    public enum GameMode { Classic, Quickshot } //Difference between 2 gamemodes and tracks them
     public GameMode currentGameMode;
     public Spawn_items spawner;
-    public GameObject gameOverPanel; // Assign this in the Inspector
+    public GameObject gameOverPanel;
     public int lives = 3; // Starting number of lives
     public static Ninja_Player Instance { get; private set; }
     private Vector3 pos;
@@ -21,54 +21,54 @@ public class Ninja_Player : MonoBehaviour
     public Text slowMotionQuantityText;
     public Text doublePointsQuantityText;
     public Text extraLifeQuantityText;
+    public ParticleSystem bombExplosionEffect;
 
-
-    // Start is called before the first frame update
+    
     void Start()
     {
-        UIManager.Instance.InitializeNinjaGameUI(slowMotionQuantityText, doublePointsQuantityText, extraLifeQuantityText);
+        UIManager.Instance.InitializeNinjaGameUI(slowMotionQuantityText, doublePointsQuantityText, extraLifeQuantityText);//live update
         LoadCredits();
+        UIManager.Instance.UpdateCreditsDisplay(credits);
         Screen.orientation = ScreenOrientation.LandscapeLeft;
         Screen.sleepTimeout = SleepTimeout.NeverSleep;
 
         if (Instance == null)
         {
             Instance = this;
-            // Other initialization code, if any
         }
         else if (Instance != this)
         {
-            Destroy(gameObject); // Ensures only one instance exists
+            Destroy(gameObject); // Makes sure only one instance exists otherwise bugs appear
         }
 
             InventoryManager.Instance.OnInventoryChanged += UpdatePowerupDisplay;
-            UpdatePowerupDisplay(); // Initial update
+            UpdatePowerupDisplay(); // Initial update 
     }
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.C)) // 'C' for 'Credit', can be any key you prefer
+        if (Input.GetKeyDown(KeyCode.C)) // C for Credit mainly used for testing
         {
-            AddCredits(1000); // Adds 1000 credits each time 'C' is pressed
+            AddCredits(1000); // Adds 1000 credits 
             SaveCredits(); // Save the new credits value
         }
 
-        if (Input.GetKeyDown(KeyCode.R))
+        if (Input.GetKeyDown(KeyCode.R)) // R for Reset data which resets credit amount and powerup amount
         {
             ResetGameData();
         }
 
-        if (Input.GetKeyDown(KeyCode.A))
+        if (Input.GetKeyDown(KeyCode.A)) //A for slowmode powerup
         {
             UseSlowDownTimePowerUp();
         }
         
-        if (Input.GetKeyDown(KeyCode.S))
+        if (Input.GetKeyDown(KeyCode.S)) //S for extra life
         {
             UseExtraLifePowerUp();
         }
 
-        if (Input.GetKeyDown(KeyCode.D))
+        if (Input.GetKeyDown(KeyCode.D)) //D for Double points
         {
             UseDoublePointsPowerUp();
         }
@@ -110,7 +110,7 @@ public class Ninja_Player : MonoBehaviour
             {
                 item.Hit();
                 AudioSource.PlayClipAtPoint(slashingSound, transform.position);
-                // Check if double points power-up is active
+                // Check if double points power up is active and doubles it
                 int pointsToAdd = PowerUpManager.Instance.IsDoublePointsActive ? 2 : 1;
                 score += pointsToAdd;
                 credits += pointsToAdd;
@@ -125,9 +125,18 @@ public class Ninja_Player : MonoBehaviour
             {
                 item.Hit();
                 AudioSource.PlayClipAtPoint(bombHitSound, transform.position);
+
+                // runs particle system
+                if (bombExplosionEffect != null)
+                {
+                    bombExplosionEffect.transform.position = item.transform.position; // Position of particles on bomb
+                    bombExplosionEffect.Play();
+                }
+
                 LoseLife(); // Lose a life when hitting a bomb
                 Debug.Log("Lives: " + lives);
             }
+
         }
     }
 
@@ -135,7 +144,7 @@ public class Ninja_Player : MonoBehaviour
     public void IncrementScore(int points)
     {
         score += points;
-        // Update UI or any other relevant components
+        
     }
     public void AddCredits(int amount)
     {
@@ -144,10 +153,6 @@ public class Ninja_Player : MonoBehaviour
         SaveCredits();
     }
 
-    public void EarnCredits(int amount)
-    {
-        AddCredits(amount); // Assuming this is how credits are earned
-    }
     public void SaveCredits()
     {
         PlayerPrefs.SetInt("PlayerCredits", credits);
@@ -176,7 +181,7 @@ public class Ninja_Player : MonoBehaviour
         credits = 0;
         SaveCredits();
 
-        // Reset power-ups - assuming InventoryManager has a method to reset inventory
+
         InventoryManager.Instance.ResetInventory();
         InventoryManager.Instance.SaveInventory();
 
@@ -201,7 +206,7 @@ public class Ninja_Player : MonoBehaviour
     {
         if (InventoryManager.Instance.GetPowerUpCount("DoublePoints") > 0)
         {
-            float duration = 10f; // Duration of double points effect
+            float duration = 10f; // Duration of double points
             PowerUpManager.Instance.ActivateDoublePoints(duration);
 
             InventoryManager.Instance.RemovePowerUp("DoublePoints", 1);
@@ -214,12 +219,8 @@ public class Ninja_Player : MonoBehaviour
         if (lives > 0)
         {
             lives--;
-            // Update UI or any other relevant components
             if (lives <= 0)
             {
-                
-              
-
                 GameOver();
             }
         }
@@ -229,7 +230,6 @@ public class Ninja_Player : MonoBehaviour
     public void GainLife()
      {
         lives++;
-        // Update UI
      }
 
     private void UseExtraLifePowerUp()
@@ -266,7 +266,7 @@ public class Ninja_Player : MonoBehaviour
 
     public void GoToMainMenu()
     {
-        SceneManager.LoadScene("MainMenu"); // Replace "MainMenu" with your main menu scene name
+        SceneManager.LoadScene("MainMenu"); 
     }
 
     void OnDestroy()
@@ -276,7 +276,7 @@ public class Ninja_Player : MonoBehaviour
 
     private void UpdatePowerupDisplay()
     {
-        // Assuming you have Text elements in your UI for each powerup type
+        
         if (UIManager.Instance.slowMotionQuantityText != null)
         {
             UIManager.Instance.slowMotionQuantityText.text = InventoryManager.Instance.GetPowerUpCount("SlowMotion").ToString();

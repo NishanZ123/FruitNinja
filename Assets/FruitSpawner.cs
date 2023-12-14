@@ -3,11 +3,11 @@ using UnityEngine;
 
 public class FruitSpawner : MonoBehaviour
 {
-    public GameObject[] fruitPrefabs; // Array of fruit prefabs
-    public float spawnInterval = 10.0f; // Interval between spawns, adjustable in the editor
-    public float fadeDuration = 20.0f; // Duration for the fruit to completely fade away
+    public GameObject[] fruitPrefabs; // Array of fruit
+    public float spawnInterval = 10.0f; // Interval between spawns
+    public float fadeDuration = 20.0f; // Duration for the fruit to fade away
     private Ninja_Player ninjaPlayer;
-    private float timeLimit = 10f; // 60 seconds for Quickshot mode
+    private float timeLimit = 10f; // seconds for Quickshot mode
     private float timeElapsed = 0f; // Time elapsed since the start
     private bool gameOverTriggered = false;
     void Start()
@@ -43,16 +43,10 @@ public class FruitSpawner : MonoBehaviour
         Rigidbody2D rb2D = fruit.GetComponent<Rigidbody2D>();
         if (rb2D != null)
         {
-            rb2D.isKinematic = true; // For 2D games
+            rb2D.isKinematic = true; 
         }
 
-        Rigidbody rb = fruit.GetComponent<Rigidbody>();
-        if (rb != null)
-        {
-            rb.useGravity = false; // For 3D games
-        }
-
-        // Start fade away process
+        // Start fade away 
         StartCoroutine(FadeAway(fruit));
     }
 

@@ -5,18 +5,18 @@ using UnityEngine.UI;
 
 public class StoreManager : MonoBehaviour
 {
-    // Assuming you have a currency system in place
+    //Credit system
     public int playerCredits;
 
-    // Prices for the items
+    // Prices for the items can edit later 
     public int slowMotionPrice = 100;
     public int doublePointsPrice = 150;
     public int extraLifePrice = 200;
     public Text creditsText;
 
-    public Text slowMotionQuantityText; // Assign in Inspector
-    public Text doublePointsQuantityText; // Assign in Inspector
-    public Text extraLifeQuantityText; // Assign in Inspector
+    public Text slowMotionQuantityText; 
+    public Text doublePointsQuantityText; 
+    public Text extraLifeQuantityText; 
 
     void Start()
     {
@@ -25,7 +25,7 @@ public class StoreManager : MonoBehaviour
             InventoryManager.Instance.SetInventoryUIText(slowMotionQuantityText, doublePointsQuantityText, extraLifeQuantityText);
         }
 
-        InventoryManager.Instance.UpdateInventoryUI(); // Refresh shop UI with current inventory data
+        InventoryManager.Instance.UpdateInventoryUI(); // This refreshes shop ui with the current inventory
     }
 
 
@@ -55,7 +55,7 @@ public class StoreManager : MonoBehaviour
         else
         {
             Debug.Log("Not enough credits to purchase.");
-            // Optionally, update the UI to reflect that the player cannot afford the item
+            
         }
         InventoryManager.Instance.SaveInventory();
     }
@@ -66,9 +66,8 @@ public class StoreManager : MonoBehaviour
         {
             creditsText.text = "Credits: " + Ninja_Player.Instance.credits.ToString();
         }
-        InventoryManager.Instance.UpdateInventoryUI(); // Update power-up counts as well
+        InventoryManager.Instance.UpdateInventoryUI();
     }
-
     public void PurchaseSlowMotionPowerUp()
     {
         if (Ninja_Player.Instance.credits >= slowMotionPrice)
@@ -76,7 +75,7 @@ public class StoreManager : MonoBehaviour
             Ninja_Player.Instance.credits -= slowMotionPrice;
             InventoryManager.Instance.AddPowerUp("SlowMotion", 1);
             UIManager.Instance.UpdateCreditsDisplay(Ninja_Player.Instance.credits);
-            Ninja_Player.Instance.SaveCredits(); // Save credits after purchase
+            Ninja_Player.Instance.SaveCredits(); // This saves credits after buying
             InventoryManager.Instance.UpdateInventoryUI();
             InventoryManager.Instance.SaveInventory();
         }
@@ -95,7 +94,7 @@ public class StoreManager : MonoBehaviour
         {
             Ninja_Player.Instance.credits -= doublePointsPrice;
             InventoryManager.Instance.AddPowerUp("DoublePoints", 1);
-            UIManager.Instance.UpdateCreditsDisplay(Ninja_Player.Instance.credits); // Update the UI
+            UIManager.Instance.UpdateCreditsDisplay(Ninja_Player.Instance.credits); // Updates the UI
             Ninja_Player.Instance.SaveCredits();
             InventoryManager.Instance.UpdateInventoryUI();
             InventoryManager.Instance.SaveInventory();
@@ -111,7 +110,7 @@ public class StoreManager : MonoBehaviour
         {
             Ninja_Player.Instance.credits -= extraLifePrice;
             InventoryManager.Instance.AddPowerUp("ExtraLife", 1);
-            UIManager.Instance.UpdateCreditsDisplay(Ninja_Player.Instance.credits); // Update the UI
+            UIManager.Instance.UpdateCreditsDisplay(Ninja_Player.Instance.credits); // Updates the UI
             Ninja_Player.Instance.SaveCredits();
             InventoryManager.Instance.UpdateInventoryUI();
             InventoryManager.Instance.SaveInventory();
@@ -123,7 +122,7 @@ public class StoreManager : MonoBehaviour
     }
     public void PurchaseItem()
     {
-        // After adjusting the player's credits
+        // After adjusting the players credits
         UIManager.Instance.UpdateCreditsDisplay(Ninja_Player.Instance.credits);
     }
 

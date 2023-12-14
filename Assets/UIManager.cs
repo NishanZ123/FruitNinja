@@ -5,12 +5,11 @@ public class UIManager : MonoBehaviour
     public static UIManager Instance { get; private set; }
 
     public Text creditsText;
-    // Add references for inventory UI Text elements
     public Text slowMotionQuantityText;
     public Text doublePointsQuantityText;
     public Text extraLifeQuantityText;
 
-    void Awake()
+    void Start()
     {
         if (Instance == null)
         {
@@ -20,7 +19,15 @@ public class UIManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        InitializeCreditsDisplay();
+
+        if (Ninja_Player.Instance != null)
+        {
+            InitializeCreditsDisplay(); // Initialize credits display
+        }
+        else
+        {
+            Debug.LogWarning("Ninja_Player instance not found");
+        }
     }
 
     public void UpdateCreditsDisplay(int credits)
@@ -48,7 +55,6 @@ public class UIManager : MonoBehaviour
         UpdateInventoryUI();
     }
 
-    // New method to update the inventory UI references and display
     public void UpdateInventoryUI()
     {
         if (slowMotionQuantityText != null)

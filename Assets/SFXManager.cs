@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class SFXManager : MonoBehaviour
 {
-    public Button[] buttons; // Assign all interactive buttons in the scene
+    public Button[] buttons; // All the buttons to assign for clicking sound
 
     void Start()
     {
@@ -27,16 +27,16 @@ public class SFXManager : MonoBehaviour
             button.onClick.RemoveAllListeners();
             button.onClick.AddListener(audioManager.PlayClickSound);
 
-            // Customize button functionality based on the button's name or tag
+            
             switch (button.name)
             {
                 case "StartButton":
-                    button.onClick.AddListener(() => LoadScene("GameSceneName")); // Replace with your game scene name
+                    button.onClick.AddListener(() => LoadScene("Test")); // used for testing but keep
                     break;
                 case "QuitButton":
                     button.onClick.AddListener(Application.Quit);
                     break;
-                    // Add more cases for other buttons
+                    
             }
         }
     }

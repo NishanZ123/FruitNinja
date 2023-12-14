@@ -17,7 +17,7 @@ public class PowerUpManager : MonoBehaviour
 
     private List<Rigidbody2D> affectedRigidbodies = new List<Rigidbody2D>();
     private Dictionary<Rigidbody2D, Vector2> originalVelocities = new Dictionary<Rigidbody2D, Vector2>();
-    private float originalGravity; // Declare originalGravity at class scope
+    private float originalGravity; //original gravity
     private bool isSlowMotionActive = false;
 
     void Start()
@@ -43,7 +43,7 @@ public class PowerUpManager : MonoBehaviour
         originalGravity = Physics2D.gravity.y;
         Physics2D.gravity = new Vector2(Physics2D.gravity.x, originalGravity * gravityScaleFactor);
 
-        // Find and slow down all relevant objects
+        // Finds and slow down all fruit and bomb objects
         foreach (var rb in FindObjectsOfType<Rigidbody2D>())
         {
             if (rb.CompareTag("Fruit") || rb.CompareTag("Enemy"))
